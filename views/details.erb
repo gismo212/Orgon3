@@ -5,5 +5,10 @@
 	<br />
 	<br />
 	addet at <%=@row['created_date'] %>
-
 </p>
+
+<form action="/details/<%= @row['id'] %>" method='POST'>
+	<textarea name="content" class="form-control" rows="6" placeholder="Type comment text here"></textarea>
+	<br/>
+	<button type="submit" class="btn btn-primary">Create comment</button>
+</form>

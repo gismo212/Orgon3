@@ -46,6 +46,7 @@ end
 
 post '/new' do
 	content= params[:content]
+	user=params[:user]
 
 	if content.length<=0
 		@error="Enter posts"

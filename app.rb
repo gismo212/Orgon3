@@ -54,7 +54,7 @@ post '/new' do
 
 	@db.execute'insert into Posts (content,created_date) values(?,datetime())',[content]
 
-	redirect '/'
+	redirect to '/'
 
 end
 
@@ -72,5 +72,20 @@ end
 post '/details/:post_id' do
 	post_id=params[:post_id]
 	content=params[:content]
-	erb "You comment #{content} ,you comment #{post_id}"
+
+		@db.execute 'insert into Comment
+		(
+			content,
+			created_date,
+			post_id
+		)
+			values
+		(
+			?,
+			datetime(),
+			?
+		)', [content, post_id]
+
+
+	redirect to ('/details/' + post_id)
 end

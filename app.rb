@@ -49,9 +49,13 @@ post '/new' do
 	content= params[:content]
 	user=params[:user]
 
-	if content.length<=0
-		@error="Enter posts"
-		return erb :new
+	hash={:user=>'Enter nick-name',:content=>'Enter text'}
+
+	hash.each do |key,value|
+		if params[key]==''
+			@error=hash[key]
+			return erb :new
+		end
 	end
 
 	@db.execute'insert into Posts (user,content,created_date) values(?,?,datetime())',[user,content]

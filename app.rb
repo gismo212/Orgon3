@@ -20,7 +20,8 @@ configure do
 	(
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	content TEXT,
-	created_date DATE
+	created_date DATE,
+	user TEXT
 	)'
 
 	@db.execute'CREATE TABLE IF NOT EXISTS Comment
@@ -53,7 +54,7 @@ post '/new' do
 		return erb :new
 	end
 
-	@db.execute'insert into Posts (content,created_date) values(?,datetime())',[content]
+	@db.execute'insert into Posts (user,content,created_date) values(?,?,datetime())',[user,content]
 
 	redirect to '/'
 

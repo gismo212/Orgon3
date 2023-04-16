@@ -20,7 +20,7 @@ configure do
 	(
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	content TEXT,
-	datestamp DATE
+	created_date DATE
 	)'
 end
 
@@ -42,6 +42,8 @@ post '/new' do
 		return erb :new
 	end
 
-	erb "You post: #{content}"
+	@db.execute'insert into Posts (content,created_date) values(?,datetime())',[content]
+
+	redirect '/'
 
 end

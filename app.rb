@@ -9,6 +9,10 @@ def init_db
 
 end
 
+before do
+	init_db
+end
+
 configure do
 
 	init_db

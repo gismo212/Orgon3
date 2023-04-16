@@ -49,3 +49,9 @@ post '/new' do
 	redirect '/'
 
 end
+
+get '/details/:post_id' do
+	post_id=params[:post_id]
+
+	erb "Display comments:#{post_id}"
+end

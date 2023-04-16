@@ -7,6 +7,15 @@
 	addet at <%=@row['created_date'] %>
 </p>
 
+
+<% @comments.each do |go| %>
+	<p>	
+
+		<%=go['content']%>
+		<span style="font-size: 75%; color: #999">Added at <%=go['created_date']%></span>
+	</p>
+<% end %>
+
 <form action="/details/<%= @row['id'] %>" method='POST'>
 	<textarea name="content" class="form-control" rows="6" placeholder="Type comment text here"></textarea>
 	<br/>

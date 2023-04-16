@@ -1,8 +1,19 @@
-<h3>All posts </h3>
+<h3>Latest posts</h3>
 
+<br />
 <% @results.each do |post| %>
+<p>
+ 
+	<%=post['content']%>
+	<br />
+	<br />
+ 	Time create to posts:<%=post['created_date']%> 
+ 	<br />
+ 	<br />
 
-<p> <%=post['content']%> </p>
-<p> Time create to posts:<%=post['created_date']%> </p>
+	<a href='/details/<%=post['id']%>'>Comments</a>
+	
+</p>
+<hr />
 
 <% end %>
